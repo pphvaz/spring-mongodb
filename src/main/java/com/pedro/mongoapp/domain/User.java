@@ -3,9 +3,20 @@ package com.pedro.mongoapp.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="user") 
+/*
+ O SpringData automaticamente mapeia a coleção com o mesmo nome da classe
+ porem com todas as letras minusculas. Nesse caso, a collection do mongo tem nome de
+ user, e a classe User, sendo assim não era preciso usar a definição 
+ */
+
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private String id;
 	private String name;
 	private String email;
